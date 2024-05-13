@@ -3,8 +3,12 @@
   <PropertyGroup>
     <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(OSX))' AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'ARM64' ">osx-arm64</DocnetRuntime>
     <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(OSX))' AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'x64'">osx-x64</DocnetRuntime>
-    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(Linux))' ">linux</DocnetRuntime>
-    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND ('$(Prefer32Bit)' == 'true' OR '$(PlatformTarget)' == 'x86') AND '$([MSBuild]::IsOsPlatform(Windows))' ">win-x86</DocnetRuntime>
+    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(Linux))' AND ('$(Prefer32Bit)' == 'true' OR '$(PlatformTarget)' == 'x86')">linux-x86</DocnetRuntime>
+    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(Linux))' AND '$(PlatformTarget)' == 'arm'">linux-arm</DocnetRuntime>
+    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(Linux))' AND '$(PlatformTarget)' == 'arm64'">linux-arm64</DocnetRuntime>
+    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(Linux))'">linux-x64</DocnetRuntime>
+    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(Windows))' AND '$(PlatformTarget)' == 'arm64'">win-arm64</DocnetRuntime>
+    <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' AND '$([MSBuild]::IsOsPlatform(Windows))' AND ('$(Prefer32Bit)' == 'true' OR '$(PlatformTarget)' == 'x86')">win-x86</DocnetRuntime>
     <DocnetRuntime Condition=" '$(DocnetRuntime)' == '' ">win-x64</DocnetRuntime>
   </PropertyGroup>
   <ItemGroup>
